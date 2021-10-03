@@ -1,0 +1,786 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+$textMain: #484848;
+$buttonMain: #204080;
+$buttonHover: #4f75c2;
+$itemHover: #c4c4c4;
+$error: #ff0000b2;
+$errorText: #ff000080;
+$transition: all 0.2s ease-in-out;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: $textMain;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+// HOME PAGE //
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+
+  .searchBar {
+    margin-top: 20px;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  width: 35%;
+  align-items: center;
+  justify-content: space-between;
+  .addRecordBtn {
+    margin-left: 50px;
+    width: 35%;
+    height: 50px;
+    padding: 0 10px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: $buttonMain;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: $transition;
+    text-shadow: 3px 2px 4px rgba(31, 31, 31, 0.616);
+
+    &:hover {
+      background-color: $buttonHover;
+      cursor: pointer;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+  margin-bottom: 30px;
+  img {
+    width: 280px;
+  }
+  p {
+    margin: 10px;
+    font-weight: 500;
+    margin-left: 55%;
+    font-size: 14px;
+  }
+}
+
+.searchBar {
+  width: 50%;
+  input {
+    width: 83%;
+    height: 50px;
+    margin-right: 2%;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid grey;
+    font-size: 1.3rem;
+    padding: 5px;
+    text-align: center;
+    &:focus {
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+
+  button {
+    width: 15%;
+    height: 50px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: $buttonMain;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: $transition;
+    text-shadow: 3px 2px 4px rgba(31, 31, 31, 0.616);
+
+    &:hover {
+      background-color: $buttonHover;
+      cursor: pointer;
+    }
+  }
+
+  .error {
+    border-color: #ff0000;
+    &::placeholder {
+      color: #ff000086;
+    }
+  }
+}
+
+.searchResultsContainer {
+  width: 50%;
+  margin-top: 30px;
+
+  .searchResults {
+    width: 83%;
+    border: 1px solid $textMain;
+    border-radius: 8px;
+    padding-right: 30px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      background-color: transparent;
+      border: none;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: $buttonMain;
+      &:hover {
+        cursor: pointer;
+        color: $buttonHover;
+      }
+    }
+  }
+}
+
+.searchItem {
+  height: 70px;
+  width: 100%;
+  position: relative;
+  border-radius: 5px;
+  .searchItemInfo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 5px;
+  }
+  .searchItemMail {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+
+  &:hover {
+    background-color: $itemHover;
+  }
+}
+
+.break {
+  width: 100%;
+}
+
+// SEARCH PAGE //
+
+.searchNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  margin: 10px;
+  img {
+    transform: scale(70%);
+  }
+
+  .addRecordBtn {
+    width: 120px;
+    height: 50px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: $buttonMain;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: $transition;
+    text-shadow: 3px 2px 4px rgba(31, 31, 31, 0.616);
+    margin-left: 30px;
+
+    &:hover {
+      background-color: $buttonHover;
+      cursor: pointer;
+    }
+  }
+
+  h2 {
+    margin-right: 50%;
+  }
+}
+
+.searchResultsMoreContainer {
+  margin-top: 50px;
+  width: 50%;
+  margin: auto;
+  transform: translateX(-24%);
+  display: flex;
+  flex-direction: column;
+
+  .searchResultsMore {
+    min-height: 645px;
+    max-height: 645px;
+    overflow: hidden;
+    .searchItem {
+      margin-top: 30px;
+    }
+  }
+
+  .order {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    align-self: flex-end;
+    color: $textMain;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+
+    .orderBy {
+      width: 280px;
+      text-align: left;
+    }
+
+    .orderBox {
+      position: absolute;
+      top: 30px;
+      left: 60px;
+      height: 180px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      background-color: white;
+      border: 1px solid $textMain;
+      border-radius: 3px;
+      padding: 10px;
+      .sortBtn {
+        text-align: left;
+        font-weight: 700;
+        height: 50px;
+        width: 90%;
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 3px;
+        &:hover {
+          background-color: #c4c4c4;
+          color: white;
+        }
+      }
+    }
+  }
+  .pagination {
+    align-self: center;
+    margin-top: 50px;
+    .pageButton {
+      width: 25px;
+      height: 25px;
+      margin: 5px;
+      background-color: transparent;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid $textMain;
+      cursor: pointer;
+      font-weight: 700;
+      text-align: center;
+      transition: $transition;
+      user-select: none;
+      &:hover {
+        background-color: $buttonMain;
+        color: white;
+      }
+    }
+
+    .pageChange {
+      height: 25px;
+      width: 85px;
+      margin: 5px;
+      background-color: transparent;
+      border: 1px solid $textMain;
+      border-radius: 4px;
+      font-weight: 700;
+      transition: $transition;
+      cursor: pointer;
+      user-select: none;
+      &:hover {
+        background-color: $buttonHover;
+        color: white;
+        border-color: transparent;
+      }
+    }
+
+    .selectedPage {
+      background-color: $buttonMain;
+      color: white;
+    }
+    .disabled {
+      cursor: default;
+      background-color: rgb(204, 204, 204);
+      color: white;
+      border-color: rgb(204, 204, 204);
+      &:hover {
+        background-color: rgb(204, 204, 204);
+      }
+    }
+  }
+}
+
+.addRecordContainer {
+  width: 50%;
+  padding: 100px;
+  padding-top: 50px;
+  margin-left: 100px;
+
+  h3 {
+    color: $error;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .addRecord {
+    display: flex;
+    flex-direction: column;
+    label {
+      margin-top: 40px;
+      font-weight: 700;
+      margin-left: 5px;
+    }
+    input {
+      height: 45px;
+      margin-top: 12px;
+      border: 1px solid black;
+      outline: none;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 1.3rem;
+      &:focus {
+        &::placeholder {
+          color: transparent;
+        }
+      }
+    }
+
+    .error {
+      color: $errorText;
+      border-color: #ff0000;
+      &::placeholder {
+        color: $errorText;
+      }
+    }
+
+    button {
+      width: 140px;
+      height: 45px;
+      background-color: $buttonMain;
+      color: white;
+      outline: none;
+      border-radius: 8px;
+      align-self: flex-end;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.226);
+      margin-top: 70px;
+      cursor: pointer;
+      transition: $transition;
+      &:hover {
+        background-color: $buttonHover;
+      }
+    }
+
+    .unclickable {
+      pointer-events: none;
+      background-color: #c4c4c4;
+    }
+  }
+}
+
+.searchBy {
+  border-top: 1px solid $textMain;
+  border-bottom: 1px solid $textMain;
+  // margin-bottom: 20px;
+  margin-right: 10px;
+  height: 50px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 45px;
+    input {
+      min-width: 25px;
+      min-height: 25px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1525px) {
+  .header {
+    width: 75%;
+  }
+
+  .searchResultsContainer {
+    width: 70%;
+  }
+
+  .searchResultsMoreContainer {
+    margin-top: 50px;
+    width: 75%;
+    transform: translateX(-24%);
+    margin: auto;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+
+    .searchResultsMore {
+      min-height: 645px;
+      max-height: 645px;
+      overflow: hidden;
+      .searchItem {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .searchBar {
+    width: 60%;
+  }
+
+  .searchItem {
+    .searchItemInfo {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      margin-bottom: 5px;
+    }
+    .searchItemMail {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translate(0%, -50%);
+    }
+  }
+
+  .searchNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    width: 100%;
+    margin: 10px;
+    margin-top: 25px;
+
+    .addRecordBtn {
+      margin-left: 0px;
+      margin-right: 10px;
+    }
+  }
+}
+@media screen and (max-width: 1025px) {
+  .searchItem {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .home {
+    margin-top: 100px;
+  }
+
+  .searchResultsMoreContainer {
+    width: 90%;
+    margin-left: 200px;
+
+    .order {
+      .orderBox {
+        left: -150px;
+        top: 30px;
+      }
+    }
+
+    .pagination {
+      margin-top: 10px;
+      .pageButton {
+        width: 50px;
+        height: 50px;
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+
+      .pageChange {
+        width: 70px;
+        height: 50px;
+      }
+    }
+  }
+  .searchResultsContainer {
+    width: 85%;
+  }
+
+  .searchBar {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      width: 80px;
+    }
+  }
+
+  .searchItem {
+    font-size: 0.8rem;
+    .searchItemMail {
+      right: 20px;
+      top: 30%;
+    }
+  }
+
+  .headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+  }
+
+  .header {
+    width: 100%;
+    p {
+      align-self: flex-end;
+      margin: 10px;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+
+  .searchNav {
+    input {
+      width: 70%;
+      margin-left: 20px;
+    }
+    a {
+      img {
+        width: 200px;
+      }
+    }
+
+    .addRecordBtn {
+      margin-left: 0px;
+      margin-right: 20px;
+    }
+    h2 {
+      margin-right: 40%;
+    }
+  }
+
+  .addRecordContainer {
+    padding: 30px;
+  }
+
+  .searchBy {
+    justify-content: unset;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .home {
+    margin-top: 50px;
+  }
+
+  .headerContainer {
+    flex-direction: column;
+    width: 80%;
+    button {
+      margin: 0;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      width: 45%;
+      height: 40px;
+      align-self: flex-end;
+    }
+  }
+
+  .header {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .searchNav {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    .addRecordBtn {
+      display: none;
+    }
+    a {
+      img {
+        width: 120px;
+        margin-right: 10px;
+      }
+    }
+
+    h2 {
+      margin-right: 0%;
+    }
+  }
+  .searchBar {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    input {
+      width: 75%;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    button {
+      width: 55px;
+      font-size: 0.9rem;
+    }
+  }
+
+  .searchResultsContainer {
+    .searchResults {
+      width: 100%;
+
+      .searchItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        width: 100%;
+        border-radius: 5px;
+        .searchItemInfo {
+          position: unset;
+          margin-bottom: 5px;
+          text-align: center;
+        }
+        .searchItemMail {
+          position: unset;
+          transform: translate(0%, 0%);
+          margin-top: 20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .searchResultsMoreContainer {
+    width: 80%;
+    margin-left: 110px;
+
+    .searchResultsMore {
+      min-height: 600px;
+      .searchItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 15px;
+        .searchItemInfo {
+          position: unset;
+          margin-bottom: 5px;
+          text-align: center;
+        }
+        .searchItemMail {
+          position: unset;
+          transform: translate(0%, 0%);
+          margin-top: 20px;
+          margin-bottom: 5px;
+          text-align: center;
+        }
+      }
+    }
+    .order {
+      .orderBox {
+        left: 0px;
+        top: 30px;
+      }
+    }
+
+    .pagination {
+      width: 100%;
+      display: flex;
+      overflow-x: scroll;
+      margin-bottom: 10px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .pageButton {
+        min-width: 50px;
+      }
+
+      .pageChange {
+        min-width: 75px;
+      }
+    }
+  }
+
+  .addRecordContainer {
+    padding: 0px;
+    margin: 50px;
+    margin-top: 0px;
+    width: 70%;
+
+    .addRecord {
+      label {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .topBar {
+    flex-direction: column;
+  }
+}
